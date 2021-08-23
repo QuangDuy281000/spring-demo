@@ -14,6 +14,8 @@ public class ProductSevice implements IProductSevice {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private IProductSevice productSevice;
     @Override
     public List<ProductEntity> select() {
         List<ProductEntity> list = productRepository.findAll();
@@ -21,12 +23,15 @@ public class ProductSevice implements IProductSevice {
     }
 
     @Override
-    public boolean add(ProductEntity productEntity) {
-        if(productEntity!=null){
-            productRepository.save(productEntity);
-            return true;
+    public boolean add(ProductEntity productEntity,int productid) {
+        List<ProductEntity> list = productSevice.select();
+        for (ProductEntity p : list){
+            if(p.getProductid()==productid){
+                return false;
+            }
         }
-        return false;
+        productRepository.save(productEntity);
+        return true;
     }
 
     @Override

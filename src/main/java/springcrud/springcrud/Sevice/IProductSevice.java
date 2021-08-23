@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface IProductSevice {
     List<ProductEntity> select();
-    boolean add(ProductEntity productEntity);
+    boolean add(ProductEntity productEntity,int productid);
     ProductEntity selectFindBy(Integer productid);
 
     void update(ProductEntity productEntity);

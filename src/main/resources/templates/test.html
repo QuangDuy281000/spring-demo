@@ -19,31 +19,31 @@
 
             <h2>Register</h2>
             <h5 th:text="${mess}" style="color: #ff0000"></h5>
-            <form th:action="@{/v1/update}" method="post">
+            <form th:action="@{/v1/update}" method="post" th:object="${productct}">
                 <div class="form-group">
                     <label>ProductID</label>
-                    <input th:type="text" class="form-control" th:name="productid" placeholder="Enter ProductID" id="username" th:value="${productct.productid}">
+                    <input th:type="text" class="form-control" th:field="*{productid}" readonly placeholder="Enter ProductID" id="username">
                 </div>
                 <div class="form-group">
                     <label>ProductName</label>
-                    <input th:type="text" class="form-control" th:name="productname" placeholder="Enter ProductName" th:value="${productct.productname}">
+                    <input th:type="text" class="form-control" th:field="*{productname}" placeholder="Enter ProductName">
                 </div>
                 <div class="form-group">
                     <label>Amount</label>
-                    <input th:type="text" class="form-control" th:name="amount" placeholder="Enter Amount" id="fullName" th:value="${productct.amount}">
+                    <input th:type="text" class="form-control" th:field="*{amount}" placeholder="Enter Amount" id="fullName">
                 </div>
                 <div class="form-group">
                     <label>Price</label>
-                    <input th:type="text" class="form-control" th:name="price" placeholder="Enter Price" id="age" th:value="${productct.price}">
+                    <input th:type="text" class="form-control" th:field="*{price}" placeholder="Enter Price" id="age">
                 </div>
                 <div class="form-group">
                     <label>Status</label>
                     <div class="radio">
                         <!--value = 1 => Nam| 0 =>Nu -->
                         <label class="checkbox-inline">
-                            <input type="radio" th:name="status" id="gender1" th:value="1" th:checked="${productct.status==1}">Còn Hàng</label>
+                            <input type="radio" th:field="*{status}" id="gender1" th:value="1">Còn Hàng</label>
                         <label class="checkbox-inline">
-                            <input type="radio" th:name="status" id="gender2" th:value="0" th:checked="${productct.status==0}">Hết Hàng</label>
+                            <input type="radio" th:field="*{status}" id="gender2" th:value="0">Hết Hàng</label>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
