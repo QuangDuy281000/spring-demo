@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>JSP Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>DANH SACH GIO HANG</h2>
+    <h5 th:text="${mess}"></h5>
+    <p><a class="btn btn-primary" th:href="@{adduser}">ADD USER</a></p>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ProductId</th>
+            <th>ProductName</th>
+            <th>Amount</th>
+            <th>Price</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="list : ${listproduct}">
+            <td th:text="*{list.getProductid()}"></td>
+            <td th:text="*{list.getProductname()}"></td>
+            <td th:text="*{list.getAmount()}"></td>
+            <td th:text="*{list.getPrice()}"></td>
+            <td><span th:text="*{list.getStatus()}"></span> </td>
+            <td><a class="btn btn-primary btn-sm" th:href="@{edituser/{productid}(productid=*{list.getProductid()})}">Edit</a> |
+                <a class="btn btn-danger btn-sm" th:href="@{deleteuser/{productid}(productid=*{list.getProductid()})}">Del</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

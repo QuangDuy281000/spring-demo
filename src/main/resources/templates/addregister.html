@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <title>JSP Page</title>
+</head>
+<body>
+<div class="container" style="margin-top: 10px;">
+    <div class="row"
+         style="border: 1px darkgrey solid; border-radius: 10px; width: 50%; margin: 0 auto; padding: 20px;">
+        <div class="col-sm-12">
+
+            <h2>Register</h2>
+            <h5 th:text="${mess}" style="color: #ff0000"></h5>
+            <form th:action="@{/v1/adduser}" method="post" th:object="${productEntity}">
+                <div class="form-group">
+                    <label>ProductID</label>
+
+                    <input th:type="text" class="form-control" th:field="*{productid}" placeholder="Enter ProductID" id="username" value="">
+                </div>
+                <div class="form-group">
+                    <label>ProductName</label>
+                    <input th:type="text" class="form-control" th:field="*{productname}" placeholder="Enter ProductName">
+                </div>
+                <div class="form-group">
+                    <label>Amount</label>
+                    <input th:type="text" class="form-control" th:field="*{amount}" placeholder="Enter Amount" id="fullName" value="">
+                </div>
+                <div class="form-group">
+                    <label>Price</label>
+                    <input th:type="text" class="form-control" th:field="*{price}" placeholder="Enter Price" id="age" value="0">
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <div class="radio">
+                        <!--value = 1 => Nam| 0 =>Nu -->
+                        <label class="checkbox-inline">
+                            <input type="radio" th:field="*{status}" value="1" id="gender1">Còn Hàng</label>
+                        <label class="checkbox-inline">
+                            <input type="radio" th:field="*{status}" checked="checked" value="0" id="gender2">Hết Hàng</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a class="btn btn-primary" th:href="@{home}">Cancel</a>
+                <a class="btn btn-primary" th:href="@{home}">Display List Product</a>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
